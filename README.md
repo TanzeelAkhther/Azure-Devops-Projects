@@ -68,14 +68,16 @@ Kubernetes Deployments
 
 ### 🛠 Infrastructure as Code (Terraform)
 Current Terraform Structure
+```
 terraform/
 ├── main.tf
 └── provider.tf
-
+```
 At the current stage, the Terraform setup focuses on getting a working AKS environment quickly.
 As the project matures, this structure will be refactored into a more production-grade layout using modules.
 
 Planned Terraform Structure (Future)
+```
 terraform/
 ├── modules/
 │ ├── vnet/
@@ -86,7 +88,7 @@ terraform/
 ├── outputs.tf
 ├── provider.tf
 └── terraform.tfvars
-
+```
 ### 🚀 Deployment Workflow
 **1️⃣ Prerequisites**
 
@@ -119,16 +121,20 @@ Private AKS Cluster
 Required networking components
 
 **3️⃣ Connect to AKS**
+```
 az aks get-credentials \
  --resource-group <rg-name> \
  --name <aks-name>
+```
 
 **4️⃣ Install Istio**
+```
 istioctl install --set profile=default
 
 Enable automatic sidecar injection:
 
 kubectl label namespace default istio-injection=enabled
+```
 
 **5️⃣ Deploy Application (Nginx)**
 
