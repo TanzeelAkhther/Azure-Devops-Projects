@@ -1,4 +1,4 @@
-#📌 Project Overview
+# 📌 Project Overview
 
 This project demonstrates an end-to-end Azure DevOps & Cloud-Native setup where infrastructure and application deployment are handled using Terraform, Azure Kubernetes Service (AKS), and Istio Service Mesh.
 
@@ -16,7 +16,7 @@ Real-world DevOps troubleshooting and networking concepts in Azure
 
 This repository is intentionally designed as a learning + portfolio project, reflecting real challenges faced by DevOps engineers in production-like environments.
 
-###🧱 High-Level Architecture
+### 🧱 High-Level Architecture
 
 Traffic Flow:
 
@@ -32,7 +32,7 @@ Kubernetes Service (ClusterIP)
 |
 Application Pod (Nginx)
 
-###☁️ Azure Components Used
+### ☁️ Azure Components Used
 
 Azure Subscription
 
@@ -50,7 +50,7 @@ Managed Identities
 
 Azure Container Registry (optional / future)
 
-###⚙️ Kubernetes & Service Mesh Components
+### ⚙️ Kubernetes & Service Mesh Components
 
 Kubernetes (AKS)
 
@@ -66,7 +66,7 @@ Kubernetes Services
 
 Kubernetes Deployments
 
-###🛠 Infrastructure as Code (Terraform)
+### 🛠 Infrastructure as Code (Terraform)
 Current Terraform Structure
 terraform/
 ├── main.tf
@@ -87,7 +87,7 @@ terraform/
 ├── provider.tf
 └── terraform.tfvars
 
-###🚀 Deployment Workflow
+### 🚀 Deployment Workflow
 **1️⃣ Prerequisites**
 
 Azure CLI
@@ -167,7 +167,7 @@ Istio operates at L7, while Azure Load Balancer operates at L4
 Key takeaway:
 Istio does not replace Azure Load Balancer — it works on top of it.
 
-####🧩 Challenges Faced & Solutions
+#### 🧩 Challenges Faced & Solutions
 **❌ Azure CLI / PATH Issues**
 
 Problem:
@@ -263,8 +263,8 @@ IaC best practices
 
 It is intentionally designed to be iterative and expandable, just like real production systems.
 
-###👤 Author
+### 👤 Author
 
-Tanzeel Akhther
+**Tanzeel Akhther**
 DevOps / Cloud Engineer
 Azure | Kubernetes | Terraform | Istio
