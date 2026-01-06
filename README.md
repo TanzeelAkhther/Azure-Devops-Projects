@@ -1,4 +1,4 @@
-#📌 Project Overview
+# 📌 Project Overview
 
 This project demonstrates an end-to-end Azure DevOps & Cloud-Native setup where infrastructure and application deployment are handled using Terraform, Azure Kubernetes Service (AKS), and Istio Service Mesh.
 
@@ -16,8 +16,8 @@ Real-world DevOps troubleshooting and networking concepts in Azure
 
 This repository is intentionally designed as a learning + portfolio project, reflecting real challenges faced by DevOps engineers in production-like environments.
 
-###🧱 High-Level Architecture
-
+### 🧱 High-Level Architecture
+```
 Traffic Flow:
 
 Client / Browser
@@ -31,8 +31,8 @@ Istio VirtualService
 Kubernetes Service (ClusterIP)
 |
 Application Pod (Nginx)
-
-###☁️ Azure Components Used
+```
+### ☁️ Azure Components Used
 
 Azure Subscription
 
@@ -50,7 +50,7 @@ Managed Identities
 
 Azure Container Registry (optional / future)
 
-###⚙️ Kubernetes & Service Mesh Components
+### ⚙️ Kubernetes & Service Mesh Components
 
 Kubernetes (AKS)
 
@@ -66,16 +66,18 @@ Kubernetes Services
 
 Kubernetes Deployments
 
-###🛠 Infrastructure as Code (Terraform)
+### 🛠 Infrastructure as Code (Terraform)
 Current Terraform Structure
+```
 terraform/
 ├── main.tf
 └── provider.tf
-
+```
 At the current stage, the Terraform setup focuses on getting a working AKS environment quickly.
 As the project matures, this structure will be refactored into a more production-grade layout using modules.
 
 Planned Terraform Structure (Future)
+```
 terraform/
 ├── modules/
 │ ├── vnet/
@@ -86,8 +88,8 @@ terraform/
 ├── outputs.tf
 ├── provider.tf
 └── terraform.tfvars
-
-###🚀 Deployment Workflow
+```
+### 🚀 Deployment Workflow
 **1️⃣ Prerequisites**
 
 Azure CLI
@@ -119,16 +121,20 @@ Private AKS Cluster
 Required networking components
 
 **3️⃣ Connect to AKS**
+```
 az aks get-credentials \
  --resource-group <rg-name> \
  --name <aks-name>
+```
 
 **4️⃣ Install Istio**
+```
 istioctl install --set profile=default
 
 Enable automatic sidecar injection:
 
 kubectl label namespace default istio-injection=enabled
+```
 
 **5️⃣ Deploy Application (Nginx)**
 
@@ -167,7 +173,7 @@ Istio operates at L7, while Azure Load Balancer operates at L4
 Key takeaway:
 Istio does not replace Azure Load Balancer — it works on top of it.
 
-####🧩 Challenges Faced & Solutions
+#### 🧩 Challenges Faced & Solutions
 **❌ Azure CLI / PATH Issues**
 
 Problem:
@@ -263,8 +269,8 @@ IaC best practices
 
 It is intentionally designed to be iterative and expandable, just like real production systems.
 
-###👤 Author
+### 👤 Author
 
-Tanzeel Akhther
+**Tanzeel Akhther**
 DevOps / Cloud Engineer
 Azure | Kubernetes | Terraform | Istio
