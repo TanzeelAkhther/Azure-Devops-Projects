@@ -1,5 +1,5 @@
 ---
-# istio-system namespace (Istio control plane)
+# istio-system namespace
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -7,7 +7,7 @@ metadata:
   labels:
     name: istio-system
 ---
-# nginx-test namespace (Your test environment)
+# nginx-test namespace
 apiVersion: v1
 kind: Namespace
 metadata:
