@@ -1,0 +1,18 @@
+---
+# istio-system namespace (Istio control plane)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-system
+  labels:
+    name: istio-system
+---
+# nginx-test namespace (Your test environment)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-test
+  labels:
+    name: nginx-test
+    environment: test
+    istio-injection: enabled  # Enables Istio sidecar injection
