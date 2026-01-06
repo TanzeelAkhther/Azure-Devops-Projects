@@ -17,7 +17,7 @@ Real-world DevOps troubleshooting and networking concepts in Azure
 This repository is intentionally designed as a learning + portfolio project, reflecting real challenges faced by DevOps engineers in production-like environments.
 
 ### 🧱 High-Level Architecture
-
+```
 Traffic Flow:
 
 Client / Browser
@@ -31,7 +31,7 @@ Istio VirtualService
 Kubernetes Service (ClusterIP)
 |
 Application Pod (Nginx)
-
+```
 ### ☁️ Azure Components Used
 
 Azure Subscription
