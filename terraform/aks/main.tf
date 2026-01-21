@@ -6,6 +6,17 @@ resource "azurerm_resource_group" "aks_rg" {
   }
 }
 
+resource "azurerm_container_registry" "acr" {
+  name                = "acraksdev"
+  resource_group_name = azurerm_resource_group.aks_rg.name
+  sku                 = "Basic"
+  location            = azurerm_resource_group.aks_rg.location
+  admin_enabled       = true
+  tags = {
+    environment = "dev"
+  }
+}
+
 resource "azurerm_virtual_network" "aks_vnet" {
   name                = "vnet-aks-dev"
   location            = azurerm_resource_group.aks_rg.location
