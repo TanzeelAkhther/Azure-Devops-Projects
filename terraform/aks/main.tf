@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "aks_rg" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "acraksdev"
+  name                = "acakdev09"
   resource_group_name = azurerm_resource_group.aks_rg.name
   sku                 = "Basic"
   location            = azurerm_resource_group.aks_rg.location
@@ -57,4 +57,13 @@ resource "azurerm_kubernetes_cluster" "dev_cluster" {
   tags = {
     environment = "dev"
   }
+}
+
+resource "azurerm_role_assignment" "acr_pull" {
+  principal_id         = azurerm_kubernetes_cluster.dev_cluster.identity[0].principal_id
+  role_definition_name = "AcrPull"
+  scope                = azurerm_container_registry.acr.id
+}
+output "aks_identity" {
+  value = azurerm_kubernetes_cluster.dev_cluster.identity[0].principal_id
 }
