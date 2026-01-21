@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-microservice
+  labels:
+    app: web-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-microservice
+  template:
+    metadata:
+      labels:
+        app: web-microservice
+    spec:
+      containers:
+      - name: web-microservice
+        image: acakdev09.azurecr.io/web-microservice:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
