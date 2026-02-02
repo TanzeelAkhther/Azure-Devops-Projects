@@ -10,16 +10,6 @@ resource "azurerm_storage_account" "backend-storage" {
   location                 = azurerm_resource_group.tf-state.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
-  
-  # Security best practices
-  min_tls_version                = "TLS1_2"
-  allow_nested_items_to_be_public = false
-  https_traffic_only_enabled      = true
-  
-  # Network rules - allow access from all networks by default
-  # You can restrict this later if needed
-  public_network_access_enabled = true
-
   tags = var.tags
 }
 
