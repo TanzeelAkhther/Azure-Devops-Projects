@@ -56,3 +56,30 @@ variable "aks_identity" {
   })
   description = "User-assigned managed identity for AKS cluster"
 }
+
+variable "keyvault" {
+  type = object({
+    name     = string
+    sku_name = string
+  })
+}
+
+variable "postgresql" {
+  type = object({
+    name                  = string
+    version               = string
+    administrator_login       = string
+    administrator_password        = string
+    storage_mb            = number
+    sku_name              = string
+    backup_retention_days = number
+    database_name         = string
+    tags                  = optional(map(string), {})
+  })
+}
+
+variable "postgresql_admin_password" {
+  type        = string
+  sensitive   = true
+  description = "PostgreSQL admin password"
+}

@@ -62,6 +62,42 @@ module "aks" {
   }
 }
 
+module "postgresql" {
+  source = "../../modules/postgresql"
+  
+  postgresql = {
+    name                   = var.postgresql.name
+    resource_group_name    = var.rg.name
+    location               = var.location
+    version                = var.postgresql.version
+    administrator_login        = var.postgresql.administrator_login
+    administrator_password = var.postgresql.administrator_password
+    storage_mb             = var.postgresql.storage_mb
+    sku_name               = var.postgresql.sku_name
+    backup_retention_days  = var.postgresql.backup_retention_days
+    database_name          = var.postgresql.database_name
+    tags                   = var.postgresql.tags
+  }
+  depends_on = [module.keyvault]
+}
+
+module "keyvault" {
+  source = "../../modules/keyvault"
+  
+  keyvault = {
+    name                     = var.keyvault.name
+    location                 = var.location
+    resource_group_name      = var.rg.name
+    sku_name                 = var.keyvault.sku_name
+    tenant_id                = data.azurerm_client_config.current.tenant_id
+    purge_protection_enabled = true
+  }
+  terraform_object_id  = data.azurerm_client_config.current.object_id
+}
+
+# Data source for current Azure config
+data "azurerm_client_config" "current" {}
+
 # Role assignment: Grant AKS kubelet identity AcrPull role on ACR
 resource "azurerm_role_assignment" "aks_acr_pull" {
   scope                = module.acr.resource_id

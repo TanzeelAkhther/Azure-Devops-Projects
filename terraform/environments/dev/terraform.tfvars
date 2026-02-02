@@ -48,3 +48,23 @@ aks = {
   }
 }
 
+keyvault = {
+  name     = "kv-reddit-dev-001"
+  sku_name = "standard"
+}
+
+# Remove password from postgresql block
+
+postgresql = {
+  name                  = "postgres-reddit-dev"
+  version               = "15"
+  administrator_login        = "pgadmin"
+  administrator_password = "placeholder-will-be-overridden"
+  storage_mb            = 32768
+  sku_name              = "B_Standard_B1ms"
+  backup_retention_days = 7
+  database_name         = "reddit_clone"
+  tags = {
+    environment = "dev"
+  }
+}
