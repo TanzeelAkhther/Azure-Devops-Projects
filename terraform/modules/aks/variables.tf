@@ -15,7 +15,8 @@ variable "aks" {
       vnet_subnet_id = string
     })
 
-    identity_type = string
+    identity_type             = string
+    user_assigned_identity_id = optional(string, null)
 
     network_profile = object({
       network_plugin = string

@@ -6,6 +6,6 @@ variable "network" {
     vnet_address_space    = list(string)
     subnet_name           = string
     subnet_address_prefix = list(string)
-    tags                  = map(string)
+    tags                  = optional(map(string), {})
   })
 }

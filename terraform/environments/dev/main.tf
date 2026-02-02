@@ -21,6 +21,15 @@ module "acr" {
   acr    = var.acr
 }
 
+module "aks_identity" {
+  source = "../../modules/iam"
+  iam = {
+    name                = var.aks_identity.name
+    location            = var.location
+    resource_group_name = var.rg.name
+  }
+}
+
 module "aks" {
   source = "../../modules/aks"
 
@@ -31,9 +40,10 @@ module "aks" {
     dns_prefix          = var.aks.dns_prefix
     kubernetes_version  = var.aks.kubernetes_version
 
-    oidc_issuer_enabled       = true
-    workload_identity_enabled = true
-    identity_type             = "SystemAssigned"
+    oidc_issuer_enabled       = false
+    workload_identity_enabled = false
+    identity_type             = "UserAssigned"
+    user_assigned_identity_id = module.aks_identity.id
 
     default_node_pool = {
       name           = "system"
@@ -50,4 +60,16 @@ module "aks" {
 
     tags = var.rg.tags
   }
+}
+
+# Role assignment: Grant AKS kubelet identity AcrPull role on ACR
+resource "azurerm_role_assignment" "aks_acr_pull" {
+  scope                = module.acr.resource_id
+  role_definition_name = "AcrPull"
+  principal_id         = module.aks.kubelet_identity_object_id
+
+  depends_on = [
+    module.acr,
+    module.aks
+  ]
 }

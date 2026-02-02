@@ -49,3 +49,10 @@ variable "aks" {
     })
   })
 }
+
+variable "aks_identity" {
+  type = object({
+    name = string
+  })
+  description = "User-assigned managed identity for AKS cluster"
+}

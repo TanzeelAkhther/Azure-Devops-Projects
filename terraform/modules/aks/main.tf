@@ -16,13 +16,7 @@ resource "azurerm_kubernetes_cluster" "dev_cluster" {
 
   identity {
     type = var.aks.identity_type
-    user_assigned_identity_id = var.kubelet_identity_id
-  }
-
-  kubelet_identity {
-    client_id                 = var.kubelet_client_id
-    object_id                 = var.kubelet_principal_id
-    user_assigned_identity_id = var.kubelet_identity_id
+    identity_ids = var.aks.identity_type == "UserAssigned" && var.aks.user_assigned_identity_id != null ? [var.aks.user_assigned_identity_id] : []
   }
 
   network_profile {

@@ -29,20 +29,20 @@ acr = {
   }
 }
 
+aks_identity = {
+  name = "identity-aks-dev"
+}
+
 aks = {
-  name                = "aks-dev-cluster"
-  resource_group_name = "rg-aks-dev"
-  location            = "centralindia"
-  kubernetes_version  = "1.33.5"
-  dns_prefix          = "aksdevcluster"
+  name               = "aks-dev-cluster"
+  kubernetes_version = "1.33.5"
+  dns_prefix         = "aksdevcluster"
   default_node_pool = {
     name       = "def-pool"
     vm_size    = "Standard_D2s_v3"
     node_count = 2
-    subnet_id  = ""
   }
   network_profile = {
-    network_plugin = "azure"
     service_cidr   = "10.1.0.0/24"
     dns_service_ip = "10.1.0.10"
   }

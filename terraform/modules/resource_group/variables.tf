@@ -1,7 +1,7 @@
 variable "rg" {
-    type = object ({
-        name = string
-        location = string
-        tags = map(string)
-    })
+  type = object({
+    name     = string
+    location = string
+    tags     = optional(map(string), {})
+  })
 }
