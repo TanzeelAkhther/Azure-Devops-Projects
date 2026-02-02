@@ -1,10 +1,12 @@
 variable "aks" {
   type = object({
-    name                = string
-    location            = string
-    resource_group_name = string
-    dns_prefix          = string
-    kubernetes_version  = string
+    name                      = string
+    location                  = string
+    resource_group_name       = string
+    dns_prefix                = string
+    kubernetes_version        = string
+    oidc_issuer_enabled       = bool
+    workload_identity_enabled = bool
 
     default_node_pool = object({
       name           = string

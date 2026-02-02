@@ -1,7 +1,3 @@
-environment = "dev"
-
-location = "centralindia"
-
 rg = {
   name     = "rg-aks-dev"
   location = "centralindia"
@@ -27,7 +23,7 @@ acr = {
   resource_group_name = "rg-aks-dev"
   location            = "centralindia"
   sku                 = "Basic"
-  admin_enabled       = true
+  admin_enabled       = false
   tags = {
     environment = "dev"
   }
@@ -40,6 +36,7 @@ aks = {
   kubernetes_version  = "1.33.5"
   dns_prefix          = "aksdevcluster"
   default_node_pool = {
+    name       = "def-pool"
     vm_size    = "Standard_D2s_v3"
     node_count = 2
     subnet_id  = ""

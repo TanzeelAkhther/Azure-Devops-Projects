@@ -1,5 +1,5 @@
-resource "azurerm_role_assignment" "acr_pull" {
-  principal_id         = var.iam.aks_principal_id
-  scope                = var.iam.acr_id
-  role_definition_name = var.iam.role_name
+resource "azurerm_user_assigned_identity" "iam" {
+  name                = var.iam.name
+  resource_group_name = var.iam.resource_group_name
+  location            = var.iam.location
 }
